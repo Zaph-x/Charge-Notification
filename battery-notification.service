@@ -1,0 +1,14 @@
+# battery-notification-service
+
+[Unit]
+Description=Battery Notification
+After=sound.target
+
+[Service]
+User=1000
+Type=oneshot
+RemainAfterExit=no
+ExecStart=/usr/bin/battery-notification.sh
+
+[Install]
+WantedBy=multi-user.target

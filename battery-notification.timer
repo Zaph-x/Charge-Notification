@@ -1,0 +1,11 @@
+# battery-notification.timer
+
+[Unit]
+Description=Runs the battery-notification.service at a 1 minute interval
+
+[Timer]
+OnCalendar=*:0/1
+Persistent=true
+
+[Install]
+WantedBy=timers.target
