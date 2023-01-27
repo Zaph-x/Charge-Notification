@@ -6,6 +6,12 @@ if [ "$(id -u)" != "0" ]; then
     exit 1
 fi
 
+if ! [ -x "$(command -v paplay)" ]; then
+    echo "Error: paplay is not installed." >&2
+    exit 1
+fi
+
+
 # check if folder exists
 if [ ! -d "/usr/share/sounds/freedesktop/stereo/" ]; then
     echo "Creating folder /usr/share/sounds/freedesktop/stereo/"
