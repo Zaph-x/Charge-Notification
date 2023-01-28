@@ -17,8 +17,11 @@ PERCENTAGE=$(echo "scale=4; $(cat /sys/class/power_supply/BAT*/energy_now | awk 
 # substring the last two digits
 PERCENTAGE=${PERCENTAGE%00}
 
+# Check the battery status of both batteries if they are charging or discharging
+STATUS=$(cat /sys/class/power_supply/BAT*/status)
+
 # notify if battery is low
-if [ $(echo "$PERCENTAGE < 20" | bc) -eq 1 ]; then
+if [ $(echo "$PERCENTAGE < 20" | bc) -eq 1 ] && [[ $STATUS =~ "Discharging" ]]; then
     notify-send "Battery low" "Battery is at $PERCENTAGE%"
     paplay /usr/share/sounds/freedesktop/stereo/window-attention.oga
 fi
