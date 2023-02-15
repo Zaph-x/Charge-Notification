@@ -22,6 +22,6 @@ STATUS=$(cat /sys/class/power_supply/BAT*/status)
 
 # notify if battery is low
 if [ $(echo "$PERCENTAGE < 20" | bc) -eq 1 ] && [[ $STATUS =~ "Discharging" ]]; then
-    notify-send "Battery low" "Battery is at $PERCENTAGE%"
+    notify-send -i "/usr/share/icons/Adwaita/scalable/status/battery-level-10-symbolic.svg" "Battery low" "Battery is at $PERCENTAGE%"
     paplay /usr/share/sounds/freedesktop/stereo/window-attention.oga
 fi

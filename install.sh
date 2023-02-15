@@ -18,12 +18,25 @@ if [ ! -d "/usr/share/sounds/freedesktop/stereo/" ]; then
     mkdir -p /usr/share/sounds/freedesktop/stereo/
 fi
 
+if [ ! -d "/usr/share/icons/Adwaita/scalable/status/" ]; then
+    echo "Creating folder /usr/share/icons/Adwaita/scalable/status/"
+    mkdir -p /usr/share/icons/Adwaita/scalable/status/
+fi
+
 if [ -f /usr/share/sounds/freedesktop/stereo/window-attention.oga ]; then
     echo "Sound file exists"
 else
     echo "Sound file does not exist"
     echo "Copying sound file"
     cp window-attention.oga /usr/share/sounds/freedesktop/stereo/
+fi
+
+if [ -f "/usr/share/icons/Adwaita/scalable/status/battery-level-10-symbolic.svg" ]; then
+    echo "Icon file exists"
+else
+    echo "Icon file does not exist"
+    echo "Copying icon file"
+    cp battery-level-10-symbolic.svg /usr/share/icons/Adwaita/scalable/status/
 fi
 
 
